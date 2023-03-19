@@ -12,18 +12,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ProductController {
 
-	private ProductService productService;
+    private ProductService productService;
 
-	@Autowired
-	public ProductController(ProductService productService) {
-		this.productService = productService;
-	}
+    @Autowired
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
 
-	@GetMapping("/products")
-	public String getProducts(Model model) {
-		model.addAttribute("products", productService.getAllProducts());
-		model.addAttribute("product", new Product());
-		return "products";
-	}
+    @GetMapping("/products")
+    public String getProducts(Model model) {
+        model.addAttribute("products", productService.getAllProducts());
+        model.addAttribute("product", new Product());
+        return "products";
+    }
 
 }

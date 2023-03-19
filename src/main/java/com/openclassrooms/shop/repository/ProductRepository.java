@@ -9,17 +9,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
-
  * @author stanlick
- *
  */
 
 @Repository
 public class ProductRepository {
     private static List<Product> products;
 
-    public ProductRepository()
-    {
+    public ProductRepository() {
         products = new ArrayList<>();
         generateProductData();
     }
@@ -27,8 +24,7 @@ public class ProductRepository {
     /**
      * Generate the default list of products
      */
-    private void generateProductData()
-    {
+    private void generateProductData() {
         long id = 0;
         products.add(new Product(++id, 10, 92.50, "Echo Dot", "(2nd Generation) - Black"));
         products.add(new Product(++id, 20, 9.99, "Anker 3ft / 0.9m Nylon Braided", "Tangle-Free Micro USB Cable"));
@@ -40,20 +36,20 @@ public class ProductRepository {
     /**
      * @return All products from the inventory
      */
-    public Product[] findAll()
-    {
-        return products.stream().filter(p -> p.getStock() > 0).sorted(Comparator.comparing(Product::getName)).toArray(Product[]::new);
+    public List<Product> findAll() {
+        return products.stream().filter(p -> p.getStock() > 0).sorted(Comparator.comparing(Product::getName)).collect(Collectors.toList());
+
     }
 
     /**
-     * @param productId ID of the getProductById
+     * @param productId        ID of the getProductById
      * @param quantityToRemove Quantity of the getProductById
      */
-    public void updateProductStocks(int productId, int quantityToRemove) {
+    public void updateProductStocks(Long productId, int quantityToRemove) {
         Product product = products.stream().filter(p -> p.getId() == productId).findFirst().get();
         product.setStock(product.getStock() - quantityToRemove);
 
-        if (product.getStock() == 0){
+        if (product.getStock() == 0) {
             products.remove(product);
         }
     }

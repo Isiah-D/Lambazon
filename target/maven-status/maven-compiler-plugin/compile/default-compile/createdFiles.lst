@@ -1,0 +1,13 @@
+com\openclassrooms\shop\repository\OrderRepository.class
+com\openclassrooms\shop\controller\CartController.class
+com\openclassrooms\shop\service\OrderService.class
+com\openclassrooms\shop\repository\ProductRepository.class
+com\openclassrooms\shop\controller\OrderController.class
+com\openclassrooms\shop\domain\CartLine.class
+com\openclassrooms\shop\controller\ProductController.class
+com\openclassrooms\shop\controller\HomeController.class
+com\openclassrooms\shop\Application.class
+com\openclassrooms\shop\domain\Order.class
+com\openclassrooms\shop\service\ProductService.class
+com\openclassrooms\shop\domain\Product.class
+com\openclassrooms\shop\domain\Cart.class

@@ -13,7 +13,7 @@ import java.util.List;
 public class ProductServiceTest {
 
     ProductRepository productRepository;
-    OrderRepository orderRepository ;
+    OrderRepository orderRepository;
     ProductService productService;
 
     @Before
@@ -24,12 +24,11 @@ public class ProductServiceTest {
     }
 
     @Test
-    public void updateProductQuantities_3ProductsUpdates_quantitiesUpdated()
-    {
+    public void updateProductQuantities_3ProductsUpdates_quantitiesUpdated() {
 
-        productService.updateProductQuantities(1L ,1);
-        productService.updateProductQuantities(3L ,2);
-        productService.updateProductQuantities(5L ,3);
+        productService.updateProductQuantities(1L, 1);
+        productService.updateProductQuantities(3L, 2);
+        productService.updateProductQuantities(5L, 3);
 
         List<Product> products = productService.getAllProducts();
 
@@ -39,8 +38,7 @@ public class ProductServiceTest {
     }
 
     @Test
-    public void getProductById_searchedForId3_productReturned()
-    {
+    public void getProductById_searchedForId3_productReturned() {
         Long id = 3L;
 
         Product product = productService.getProductById(id);

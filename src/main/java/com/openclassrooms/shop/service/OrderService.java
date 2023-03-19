@@ -2,6 +2,7 @@ package com.openclassrooms.shop.service;
 
 import com.openclassrooms.shop.domain.Cart;
 import com.openclassrooms.shop.domain.Order;
+import com.openclassrooms.shop.domain.Product;
 import com.openclassrooms.shop.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,35 +18,35 @@ public class OrderService {
 
 
     @Autowired
-    public OrderService(OrderRepository orderRepository, ProductService productService)
-    {
+    public OrderService(OrderRepository orderRepository, ProductService productService) {
         this.orderRepository = orderRepository;
         this.productService = productService;
     }
 
     /**
-     *
      * @param order Order to be saved
      */
-    public void saveOrder(Order order)
-    {
+    public void saveOrder(Order order) {
         order.setDate(LocalDate.now());
         orderRepository.Save(order);
-        updateInventory();
+//        updateInventory(getCart().);
+//        Product product = products.stream().filter(p -> p.getId() == productId).findFirst().get();
+
     }
 
     /**
      * Update the product quantities inventory and clears the cart
      */
-    private void updateInventory()
-    {
+    private void updateInventory(Long productId, int quantity) {
+//        productService.updateProductQuantities(productId,quantity);
         cart.clear();
     }
 
     /**
      * @return Returns the single instance of cart in the application
      */
-    public Cart getCart(){
+    public Cart getCart() {
+
         return this.cart;
     }
 }

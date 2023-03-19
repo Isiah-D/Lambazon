@@ -15,46 +15,48 @@ import java.util.List;
 @Service
 public class ProductService {
 
-	private static final Logger log = LoggerFactory.getLogger(ProductService.class);
+    private static final Logger log = LoggerFactory.getLogger(ProductService.class);
 
-	private ProductRepository productRepository;
-	private OrderRepository orderRepository;
+    private ProductRepository productRepository;
+    private OrderRepository orderRepository;
 
-	@Autowired
-	public ProductService(ProductRepository repository, OrderRepository orderRepository) {
-		this.productRepository = repository;
-		this.orderRepository = orderRepository;
-	}
+    @Autowired
+    public ProductService(ProductRepository repository, OrderRepository orderRepository) {
+        this.productRepository = repository;
+        this.orderRepository = orderRepository;
+    }
 
-	/**
-	 * @return all products from the inventory
-	 */
-	public Product[] getAllProducts() {
+    /**
+     * @return all products from the inventory
+     */
+    public List<Product> getAllProducts() {
 
-		// TODO change the return type from array to List<T> and propagate the change
-		// throughout the application
-		return productRepository.findAll();
-	}
+        // TODO change the return type from array to List<T> and propagate the change
+        return productRepository.findAll();
+    }
 
-	/**
-	 *
-	 * @param productId Id of the product
-	 * @return a product form the inventory
-	 */
-	public Product getProductById(Long productId)
-	{
-		// TODO implement the method
-		return null;
+    /**
+     * @param productId Id of the product
+     * @return a product form the inventory
+     */
+    public Product getProductById(Long productId) {
+        // TODO implement the method
+        //tricky
+//		Product product = getAllProducts().get(productId.intValue());
+        //For loop to iterate list
+        Product product = getAllProducts().stream().filter(p -> p.getId() == productId).findFirst().get();
 
-	}
+        return product;
 
-	/**
-	 * Update the quantities left for each product in the inventory depending of ordered the quantities
-	 * @param productId ID of the product to be updated
-	 */
-	public void updateProductQuantities(Long productId, int quantity)
-	{
+    }
 
-		// TODO implement the method
-	}
+    /**
+     * Update the quantities left for each product in the inventory depending of ordered the quantities
+     *
+     * @param productId ID of the product to be updated
+     */
+    public void updateProductQuantities(Long productId, int quantity) {
+        productRepository.updateProductStocks(productId, quantity);
+        // TODO implement the method
+    }
 }

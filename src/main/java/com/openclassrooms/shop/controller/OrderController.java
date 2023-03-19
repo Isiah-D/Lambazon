@@ -16,21 +16,18 @@ public class OrderController {
     private OrderService orderService;
 
     @Autowired
-    public OrderController(OrderService orderService)
-    {
+    public OrderController(OrderService orderService) {
         this.orderService = orderService;
     }
 
     @GetMapping("/order")
-    public String getOrder(Order order)
-    {
+    public String getOrder(Order order) {
         return "order";
     }
 
     @PostMapping("/order")
-    public String placeOrder(@Valid @ModelAttribute("order") Order order, BindingResult result, ModelMap model)
-    {
-        if (orderService.getCart().getCartLineList().isEmpty()){
+    public String placeOrder(@Valid @ModelAttribute("order") Order order, BindingResult result, ModelMap model) {
+        if (orderService.getCart().getCartLineList().isEmpty()) {
             result.reject("cart.empty");
         }
         if (!result.hasErrors()) {
