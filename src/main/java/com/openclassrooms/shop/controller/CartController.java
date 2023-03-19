@@ -12,46 +12,42 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class CartController {
 
-	private ProductService productService;
-	private OrderService orderService;
+    private ProductService productService;
+    private OrderService orderService;
 
-	@Autowired
-	public CartController(ProductService productService, OrderService orderService)
-	{
-		this.productService = productService;
-		this.orderService = orderService;
-	}
+    @Autowired
+    public CartController(ProductService productService, OrderService orderService) {
+        this.productService = productService;
+        this.orderService = orderService;
+    }
 
-	@GetMapping("/cart")
-	public String getCart(Model model)
-	{
-		model.addAttribute("cart", orderService.getCart());
-		return "cart";
-	}
+    @GetMapping("/cart")
+    public String getCart(Model model) {
+        model.addAttribute("cart", orderService.getCart());
+        return "cart";
+    }
 
-	@PostMapping("/cart/add")
-	public String addToCart(@RequestParam("productId") Long productId)
-	{
-		Product product = productService.getProductById(productId);
+    @PostMapping("/cart/add")
+    public String addToCart(@RequestParam("productId") Long productId) {
+        Product product = productService.getProductById(productId);
 
-		if (product != null) {
-			orderService.getCart().addItem(product, 1);
-			productService.updateProductQuantities(productId , 1);
-			return "redirect:/cart";
-		} else {
-			return "redirect:/products";
-		}
-	}
+        if (product != null) {
+            orderService.getCart().addItem(product, 1);
+            productService.updateProductQuantities(productId, 1);
+            return "redirect:/cart";
+        } else {
+            return "redirect:/products";
+        }
+    }
 
-	@PostMapping("cart/remove")
-	public String removeFromCart(@RequestBody Long productId)
-	{
-		Product product = productService.getProductById(productId);
+    @PostMapping("cart/remove")
+    public String removeFromCart(@RequestBody Long productId) {
+        Product product = productService.getProductById(productId);
 
-		if (product != null) {
-			orderService.getCart().removeLine(product);
-		}
-		return "redirect:/cart";
-	}
+        if (product != null) {
+            orderService.getCart().removeLine(product);
+        }
+        return "redirect:/cart";
+    }
 
 }

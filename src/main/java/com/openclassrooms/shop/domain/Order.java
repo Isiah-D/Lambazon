@@ -6,89 +6,89 @@ import java.util.List;
 
 
 public class Order {
-	
-	private Long id;
-	
-	private LocalDate date = LocalDate.now();
 
-	private List<CartLine> lines;
+    private Long id;
 
-	@NotBlank
-	private String name;
+    private LocalDate date = LocalDate.now();
 
-	@NotBlank
-	private String address;
+    private List<CartLine> lines;
 
-	@NotBlank
-	private String city;
+    @NotBlank
+    private String name;
 
-	private String zip;
+    @NotBlank
+    private String address;
 
-	@NotBlank
-	private String country;
+    @NotBlank
+    private String city;
 
-	public List<CartLine> getLines() {
-		return lines;
-	}
+    private String zip;
 
-	public void setLines(List<CartLine> lines) {
-		this.lines = lines;
-	}
+    @NotBlank
+    private String country;
 
-	public String getName() {
-		return name;
-	}
+    public List<CartLine> getLines() {
+        return lines;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setLines(List<CartLine> lines) {
+        this.lines = lines;
+    }
 
-	public String getAddress() {
-		return address;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getCity() {
-		return city;
-	}
+    public String getAddress() {
+        return address;
+    }
 
-	public void setCity(String city) {
-		this.city = city;
-	}
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-	public String getZip() {
-		return zip;
-	}
+    public String getCity() {
+        return city;
+    }
 
-	public void setZip(String zip) {
-		this.zip = zip;
-	}
+    public void setCity(String city) {
+        this.city = city;
+    }
 
-	public String getCountry() {
-		return country;
-	}
+    public String getZip() {
+        return zip;
+    }
 
-	public void setCountry(String country) {
-		this.country = country;
-	}
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public String getCountry() {
+        return country;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
 
-	public LocalDate getDate() {
-		return date;
-	}
+    public LocalDate getDate() {
+        return date;
+    }
 
-	public void setDate(LocalDate date) {
-		this.date = date;
-	}
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
 }

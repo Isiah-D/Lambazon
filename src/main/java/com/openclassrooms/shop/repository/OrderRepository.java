@@ -7,10 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
-
- *
  * @author stanlick
- *
  */
 
 @Repository
@@ -18,17 +15,16 @@ public class OrderRepository {
 
     private List<Order> orders;
 
-    public OrderRepository()
-    {
+    public OrderRepository() {
         orders = new ArrayList<Order>();
     }
 
     /**
      * Saves an order
+     *
      * @param order order to be saved
      */
-    public void Save(Order order)
-    {
+    public void Save(Order order) {
         orders.add(order);
     }
 }
