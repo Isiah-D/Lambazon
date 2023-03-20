@@ -1,21 +1,18 @@
 package com.openclassrooms.shop.domain;
 
-import com.openclassrooms.shop.service.ProductService;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class Cart {
     //Private fields to be added
-    List<CartLine> cartlines = new ArrayList<>();
+    List<CartLine> cartLines = new ArrayList<>();
 
     /**
      * @return the actual cartline list
      */
     public List<CartLine> getCartLineList() {
         //TODO implement the method
-        return cartlines;
+        return cartLines;
     }
 
     /**
@@ -27,8 +24,15 @@ public class Cart {
     public void addItem(Product product, int quantity) {
         // TODO implement the method
         //Add if-check with incrementation if already exists
+        for (CartLine cartLine : cartLines) {
+            if (cartLine.getProduct().equals(product)) {
+                int newQuantity = cartLine.getQuantity() + quantity;
+                cartLine.setQuantity(newQuantity);
+                return;
+            }
+        }
         CartLine cartline = new CartLine(product, quantity);
-        getCartLineList().add(cartline);
+        cartLines.add(cartline);
     }
 
     /**
@@ -37,7 +41,7 @@ public class Cart {
      * @param product the getProductById to be removed
      */
     public void removeLine(Product product) {
-        getCartsLineList().removeIf(l -> l.getProduct().getId().equals(product.getId()));
+//        getCartsLineList().removeIf(l -> l.getProduct().getId().equals(product.getId()));
     }
 
 
@@ -55,7 +59,15 @@ public class Cart {
      */
     public double getAverageValue() {
         // TODO implement the method
-        return 0.0;
+        Double runningTotal = 0.0;
+        Double average = 0.0;
+        for (CartLine cartLine : cartLines) {
+            runningTotal +=cartLine.getSubtotal();
+            if(!cartLines.iterator().hasNext()){
+                average = runningTotal / cartLines.size();
+            }
+        }
+        return average;
     }
 
     /**
@@ -64,7 +76,8 @@ public class Cart {
      */
     public Product findProductInCartLines(Long productId) {
         // TODO implement the method
-        return null;
+        Product product = getCartLineByIndex(productId.intValue()).getProduct();
+        return product;
     }
 
     /**
