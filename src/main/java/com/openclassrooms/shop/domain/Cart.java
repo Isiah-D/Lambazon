@@ -76,8 +76,12 @@ public class Cart {
      */
     public Product findProductInCartLines(Long productId) {
         // TODO implement the method
-        Product product = getCartLineByIndex(productId.intValue()).getProduct();
-        return product;
+        for (int i = 0; i < cartLines.size(); i++){
+            if (cartLines.get(i).getProduct().getId().equals(productId)){
+                return cartLines.get(i).getProduct();
+            }
+        }
+        return null;
     }
 
     /**
@@ -85,7 +89,8 @@ public class Cart {
      * @return CartLine in that index
      */
     public CartLine getCartLineByIndex(int index) {
-        return getCartLineList().get(index);
+        CartLine foundCartline = cartLines.get(index);
+        return foundCartline;
     }
 
     /**
