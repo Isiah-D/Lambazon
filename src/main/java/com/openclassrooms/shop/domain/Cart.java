@@ -7,6 +7,7 @@ public class Cart {
     //Private fields to be added
     List<CartLine> cartLines = new ArrayList<>();
     Double total = 0.0;
+    private int quantity;
 
     /**
      * @return the actual cartline list
@@ -60,8 +61,15 @@ public class Cart {
      */
     public double getAverageValue() {
         // TODO implement the method
-        Double averageValue = getTotalValue() / cartLines.size();
-        return averageValue;
+        double totalPrice = 0;
+        double totalQuantity = 0;
+        for (int i = 0; i < cartLines.size(); i++) {
+
+            quantity = cartLines.get(i).getQuantity();
+            totalPrice += cartLines.get(i).getProduct().getPrice() * quantity;
+            totalQuantity += quantity;
+        }
+        return totalPrice / totalQuantity;
     }
 
     /**
