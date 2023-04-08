@@ -3,10 +3,11 @@ package com.openclassrooms.shop.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Cart that holds product information
+ */
 public class Cart {
-    //Private fields to be added
     List<CartLine> cartLines = new ArrayList<>();
-    Double total = 0.0;
     private int quantity;
 
     /**
@@ -49,6 +50,8 @@ public class Cart {
      */
     public double getTotalValue() {
         //TODO implement the method
+        Double total = 0.0;
+
         for (CartLine cartline: cartLines) {
            total += cartline.getSubtotal();
         }
@@ -60,7 +63,6 @@ public class Cart {
      * @return Get average value of a cart
      */
     public double getAverageValue() {
-        // TODO implement the method
         double totalPrice = 0;
         double totalQuantity = 0;
         for (int i = 0; i < cartLines.size(); i++) {

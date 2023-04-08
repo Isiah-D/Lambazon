@@ -1,9 +1,7 @@
 package com.openclassrooms.shop.service;
 
-import com.openclassrooms.shop.domain.Cart;
-import com.openclassrooms.shop.domain.CartLine;
-import com.openclassrooms.shop.repository.OrderRepository;
 import com.openclassrooms.shop.domain.Product;
+import com.openclassrooms.shop.repository.OrderRepository;
 import com.openclassrooms.shop.repository.ProductRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,7 +29,6 @@ public class ProductService {
      */
     public List<Product> getAllProducts() {
 
-        // TODO change the return type from array to List<T> and propagate the change
         return productRepository.findAll();
     }
 
@@ -40,10 +37,6 @@ public class ProductService {
      * @return a product form the inventory
      */
     public Product getProductById(Long productId) {
-        // TODO implement the method
-        //tricky
-//		Product product = getAllProducts().get(productId.intValue());
-        //For loop to iterate list
         Product product = getAllProducts().stream().filter(p -> p.getId() == productId).findFirst().get();
 
         return product;
@@ -57,6 +50,5 @@ public class ProductService {
      */
     public void updateProductQuantities(Long productId, int quantity) {
         productRepository.updateProductStocks(productId, quantity);
-        // TODO implement the method
     }
 }
