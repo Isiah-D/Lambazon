@@ -41,7 +41,7 @@ public class Cart {
      * @param product the getProductById to be removed
      */
     public void removeLine(Product product) {
-//        getCartsLineList().removeIf(l -> l.getProduct().getId().equals(product.getId()));
+        getCartsLineList().removeIf(l -> l.getProduct().getId().equals(product.getId()));
     }
 
 
@@ -49,7 +49,6 @@ public class Cart {
      * @return total value of a cart
      */
     public double getTotalValue() {
-        //TODO implement the method
         Double total = 0.0;
 
         for (CartLine cartline: cartLines) {
