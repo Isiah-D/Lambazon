@@ -41,7 +41,7 @@ public class Cart {
      * @param product the getProductById to be removed
      */
     public void removeLine(Product product) {
-        getCartsLineList().removeIf(l -> l.getProduct().getId().equals(product.getId()));
+        getCartLineList().removeIf(l -> l.getProduct().getId().equals(product.getId()));
     }
 
 
